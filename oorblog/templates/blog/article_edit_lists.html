@@ -1,0 +1,45 @@
+{% extends "blog/base.html" %}
+{% block bodycontent %}
+			<!-- Main -->
+				<div id="main-wrapper">
+					<div id="main" class="container">
+                        <form  method="post" action="{% url 'add_article' %}" >
+                            <div align="left">
+                                <link rel="stylesheet" href="/static/blog/assets/css/button.css" />
+                                <button class="button red" type="submit"><div class="shine"></div>新 增</button>
+                            </div>
+                        </form></br>
+						<div class="row">
+							<!-- Content -->
+                                {% for lists in article_lists.object_list %}
+								<div id="content" class="8u 12u(mobile)">
+										<article class="box post">
+											<header>
+                                                <h4><a href="{% url 'edit_article' lists.id %}">[<span style="color: #a40000">编辑</span>]{{ lists.blog_title }}</a></h4>
+											</header>
+                                            <span class="ptime">发布时间：{{ lists.blog_timestamp }} 作者：{{ lists.blog_author }} </span>
+										</article>
+								</div>
+                                {% endfor %}
+							<!-- Sidebar -->
+								<div id="content" class="8u 12u(mobile)">
+									<!-- Highlights -->
+										<section>
+											<ul class="divided">
+												<li>
+													<!-- Highlight -->
+														<article class="box highlight">
+															<header>
+																<h3><a href="#">{{ lists.blog_title }}</a></h3>
+															</header>
+														</article>
+												</li>
+											</ul>
+										</section>
+
+								</div>
+
+						</div>
+					</div>
+				</div>
+{% endblock bodycontent %}

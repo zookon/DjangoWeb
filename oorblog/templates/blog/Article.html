@@ -1,0 +1,50 @@
+{% extends "blog/base_details.html" %}
+{% load custom_markdown %}
+{% block bodycontent %}
+			<!-- Main -->
+				<div id="main-wrapper">
+					<div id="main" class="container">
+						<div class="row">
+							<!-- Content -->
+								<div id="content" class="8u 12u(mobile)">
+										<article class="box post">
+											<header>
+												<h2>{{ blog_content.blog_title }}</h2>
+											</header>
+											<span class="image featured"><img src="/static/blog/images/pic04.jpg" alt="" /></span>
+											<!-- <h3>Right is also not left</h3> -->
+											<!-- <p>{{ blog_content.blog_body|linebreaksbr }}</p> -->
+                                            <p>{{ blog_content.blog_body|custom_markdown|linebreaksbr }}</p>
+										</article>
+
+								</div>
+
+							<!-- Sidebar -->
+								<div id="sidebar" class="4u 12u(mobile)">
+									<!-- Highlights -->
+										<section>
+											<ul class="divided">
+												{% for content in blog_body %}
+												<li>
+													<!-- Highlight -->
+														<article class="box highlight">
+															<header>
+																<h3><a href="{% url 'article' content.id %}">{{ content.blog_title }}</a></h3>
+															</header>
+															<a href="#" class="image left"><img src="/static/blog/images/pic06.jpg" alt="" /></a>
+															<p>{{ content.blog_body|slice:"200"|linebreaksbr }}</p>
+															<ul class="actions">
+																<li><a href="{% url 'article' content.id %}" class="button icon fa-file">全文阅读</a></li>
+															</ul>
+														</article>
+												</li>
+												{% endfor %}
+											</ul>
+										</section>
+
+								</div>
+
+						</div>
+					</div>
+				</div>
+{% endblock bodycontent %}

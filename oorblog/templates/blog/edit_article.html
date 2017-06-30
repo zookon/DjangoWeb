@@ -1,0 +1,43 @@
+{% extends "blog/base.html" %}
+{% block bodycontent %}
+<!--header end-->
+<!-- <div id="mainbody" style="background-color: #333333"> -->
+<div id="mainbody" >
+  <div >
+    <div >
+  		<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您当前的位置：<a href="/">首页</a>&nbsp;>&nbsp;写日志</h2>
+			<ul class="divided">
+				<form method="post" action="{% url 'sub_edit_article' blog_content.id %}" class="container">
+
+                    <li class="container" style="">
+                        <p><strong>文章标题</strong></p>
+                    </li>
+				    <div class="container">
+				        <select name="article_type">
+				            <option selected="selected">{{ blog_content.blog_type }}</option>
+				            <option value="01">兴趣杂谈</option>
+				            <option value="0201">python</option>
+				            <option value="0202">python-Django</option>
+				            <option value="0203">python-Scrapy</option>
+                            <option value="03">大数据</option>
+                            <option value="04">个人感悟</option>
+				        </select><br/>
+				        <input name="article_title" type="text"  value="{{ blog_content.blog_title }}">
+				    </div>
+                    <li class="container">
+				        <p><strong>文章内容</strong></p>
+                    </li>
+				    <textarea name="article_editor" rows="55" class="container">{{ blog_content.blog_body|safe }}</textarea>
+                    <br/>
+                    <div align="center">
+				        <input type="submit" value="提交" >
+                    </div>
+				</form>
+			</ul>
+		</div>
+    <!--bloglist end-->
+  </div>
+  <!--blogs end-->
+</div>
+<!--mainbody end-->
+{% endblock bodycontent %}

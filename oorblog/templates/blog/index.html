@@ -1,0 +1,101 @@
+{% extends "blog/base.html" %}
+{% load custom_markdown %}
+{% block bodycontent %}
+			<!-- Main -->
+				<div id="main-wrapper">
+					<div id="main" class="container">
+						<div class="row">
+								<div id="content" class="8u 12u(mobile)">
+
+									<!-- Excerpts -->
+<!-- 										<section>
+											<ul class="divided">
+												<li>
+
+														<article class="box excerpt">
+															<header>
+																<span class="date">July 30</span>
+																<h3><a href="#">Just another post</a></h3>
+															</header>
+															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
+															suscipit convallis non id orci lorem ipsum sed magna consequat feugiat lorem dolore.</p>
+														</article>
+
+												</li>
+												<li>
+
+														<article class="box excerpt">
+															<header>
+																<span class="date">July 28</span>
+																<h3><a href="#">And another post</a></h3>
+															</header>
+															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
+															suscipit convallis non id orci lorem ipsum sed magna consequat feugiat lorem dolore.</p>
+														</article>
+
+												</li>
+												<li>
+														<article class="box excerpt">
+															<header>
+																<span class="date">July 24</span>
+																<h3><a href="#">One more post</a></h3>
+															</header>
+															<p>Lorem ipsum dolor odio facilisis convallis. Etiam non nunc vel est
+															suscipit convallis non id orci lorem ipsum sed magna consequat feugiat lorem dolore.</p>
+														</article>
+
+												</li>
+											</ul>
+										</section> -->
+
+									<!-- Highlights -->
+										<section>
+											<ul class="divided">
+                                                {% for content in article_lists.object_list %}
+												<li>
+													<!-- Highlight -->
+														<article class="box highlight">
+															<header>
+																<h3><a href="{% url 'article' content.id %}" method="post">{{ content.blog_title }}</a></h3>
+															</header>
+															<a href="#" class="image left"><img src="/static/blog/images/pic06.jpg" alt="" /></a>
+															<p>{{ content.blog_body|slice:"200"|custom_markdown }}……</p>
+															<ul class="actions">
+																<li><a href="{% url 'article' content.id %}" class="button icon fa-file" method="post">全文阅读</a></li>
+															</ul>
+														</article>
+												</li>
+                                                {% endfor %}
+											</ul>
+										</section>
+
+
+								</div>
+															<!-- Sidebar -->
+								<div id="sidebar" class="4u 12u(mobile)">
+
+									<!-- Excerpts -->
+										<section>
+											<ul class="divided">
+												<li>
+													<!-- Excerpt -->
+														<article class="box excerpt">
+															<header>
+																<h3><a href="{% url 'person_info' %}">个人信息</a></h3>
+															</header>
+															<p>网名：{{ userinfo.nickname }}</p>
+                                                            <p>职业：{{ userinfo.work }}</p>
+                                                            <p>公司：{{ userinfo.company }}</p>
+                                                            <p>Email：{{ userinfo.email }}</p>
+														</article>
+												</li>
+											</ul>
+										</section>
+								</div>
+
+						</div>
+					</div>
+
+
+				</div>
+{% endblock bodycontent %}
