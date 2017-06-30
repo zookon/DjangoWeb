@@ -83,7 +83,16 @@ WSGI_APPLICATION = 'oorblog.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'oorblog',
+        'USER': 'kblog',
+        'PASSWORD': 'kblog',
+        'HOST': '103.218.2.145',
+        'PORT': '3306',
+    }
+}
 
 
 # Password validation
@@ -122,3 +131,5 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+STATIC_URL = '/static/'
+STATIC_ROOT = "/var/DjangoWeb/oorblog/kblog/static"
